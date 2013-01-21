@@ -1,0 +1,35 @@
+#write a program that can encrypt texts with an alphabetical caesar cipher. 
+#This cipher can ignore numbers, symbols, and whitespace.
+x = 0
+scramb = "" 
+final = ""
+characterloc = 0
+cleanword = raw_input("please input your secret message: ")
+cleanword = str.upper(cleanword)
+clean_array = list()
+cipher = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ ")
+print cleanword
+#scrambling the code and making sure the index doesn't loop impropperly. 
+for x in cleanword:
+  if x == ' ':
+		clean_array.append(' ')
+	else:
+		characterloc = cipher.index(x)
+		characterloc += 3
+		if characterloc >26:
+			characterloc -= 26
+		clean_array.append(cipher[characterloc])
+scramb = ''.join(clean_array)
+print scramb
+#decoding the scramble
+decoded = list()
+for x in clean_array:
+		if x == ' ':
+			decoded.append(' ')
+		else:
+			characterloc = cipher.index(x)
+			characterloc -= 3
+			decoded.append(cipher[characterloc])
+
+final = ''.join(decoded)
+print final
